@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>	
+	   <record id="view_hr_attendance_shift_form" model="ir.ui.view">
+	       <field name="name">hr.attendance.shift.form</field>
+	       <field name="model">hr.attendance.shift</field>
+	       <field name="arch" type="xml">
+	           <form>
+	               <sheet>
+	               		<group>
+	               			<group>
+	               				<field name="name" />
+	               			</group>
+	               			<group>
+	               				<field name="in_time" widget='float_time' />
+	               				<field name="out_time" widget='float_time' />
+	               			</group>
+	               		</group>
+	               </sheet>
+	           </form>
+	        </field>
+	    </record>    
+	
+	    <record id="view_hr_attendance_shift_tree" model="ir.ui.view">
+	        <field name="name">hr.attendance.shift.tree</field>
+	        <field name="model">hr.attendance.shift</field>
+	        <field name="arch" type="xml">
+	        	<tree>
+		        	<field name="name" />
+		        	<field name="in_time" widget='float_time' />
+		        	<field name="out_time" widget='float_time' />
+	        	</tree>
+	        </field>
+	    </record>	    
+	    
+        <record id="action_hr_attendance_shift" model="ir.actions.act_window">
+            <field name="name">Shift</field>
+            <field name="res_model">hr.attendance.shift</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_attendance_shift_tree"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a Shift
+              </p>
+            </field>
+        </record>
+	        
+        <menuitem
+            id="hr_attendance_update.menu_action_hr_attendance_shift"
+            action="hr_attendance_update.action_hr_attendance_shift"
+            parent="hr_attendance.menu_hr_attendance_root"
+            sequence="90"/>
+	            
+    
+	</data>
+</odoo>
