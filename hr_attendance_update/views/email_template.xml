@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<odoo>
+<data>
+        <record id="email_template_auto_checkout" model="mail.template">
+            <field name="name">Auto Checkout: Send by email</field>
+            <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+            <field name="email_from">${(object.employee_id.email) |safe}</field>            
+            <field name="subject">Auto Checkout : ${object.employee_id.name}</field>
+            <field name="body_html" type="html">
+				<div style="margin: 0px; padding: 0px;">
+				    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+				        Dear
+				        % if object.employee_id.parent_id.name:
+				            ${object.employee_id.parent_id.name},
+				        % endif
+				        <br /><br />
+				        Your are not checkout properly on <strong>${object.shift_id.name}</strong> on 
+				        ${object.check_in.split('-')[2] + '-' + object.check_in.split('-')[1] + '-' + object.check_in.split('-')[0]} 			        
+				        
+				    </p>
+				</div>
+            </field>
+            <field name="lang">${user.email}</field>
+        </record>
+        
+</data>
+</odoo>
