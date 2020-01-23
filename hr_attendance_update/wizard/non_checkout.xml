@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_non_checkout_view" model="ir.ui.view">
+            <field name="name">hr.attendance.checkout.form</field>
+            <field name="model">hr.attendance.checkout</field>
+            <field name="arch" type="xml">
+                <form string="Non checkout list">
+                    <group>
+                         <field name="from_date" />
+                    </group>
+                    <group>
+                         <field name="to_date" />                         
+                    </group>
+                    <footer>
+                        <button string='Submit' name="non_checkout_users" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_view_non_checkout_view" model="ir.actions.act_window">
+            <field name="name">Attendance Non Checkout List</field>
+            <field name="res_model">hr.attendance.checkout</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_non_checkout_view"/>
+            <field name="target">new</field>
+        </record>
+        
+        
+        
+        
+        <menuitem
+            id="hr_attendance_update.menu_action_non_checkout_view"
+            action="action_view_non_checkout_view"
+            parent="hr_attendance.menu_hr_attendance_root"
+            sequence="90"/>
+            
+    </data>
+</odoo>
